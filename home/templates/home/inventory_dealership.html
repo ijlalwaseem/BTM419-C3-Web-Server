@@ -1,0 +1,48 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+<style>
+  
+  body {
+    margin: 0 0.1%;
+    font-family: sans-serif;
+  }
+
+  div {
+    text-align: center;
+  }
+
+  h2 {
+     color: #0c5b86;   
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0%;
+  }
+
+</style> 
+
+<div>
+  <h1 class="alert alert-primary" role="alert">Inventory</h1>  
+  <h2>{{ inventory_dealership.dealership }}</h2>
+</div>
+
+  <p></p>
+  <p><a class="btn btn-outline-danger" href="{% url 'home:inventory_dealerships' %}" role="button">{{ "Back" }}</a></p>
+<div>
+  <ul>
+  {% for inventory in inventorys %}
+    <li>
+      <br>
+      <p>Product: {{ inventory.product }}</p>
+      <p>Quantity: {{ inventory.quantity }}</p>
+      <p><a class="btn btn-outline-secondary" href="{% url 'home:edit_inventory' inventory.id %}" role="button">Update Inventory</a></p>
+    </li>
+  {% empty %}
+    <li>There are no inventory entries yet</li>
+  {% endfor %}
+  </ul>
+</div>
+  <p><a class="btn btn-outline-primary" href="{% url 'home:new_inventory' inventory_dealership.id %}" role="button">Add New Product</a></p>
+{% endblock content %}

@@ -1,0 +1,74 @@
+{% extends "home/base.html" %}
+{% block content %}
+
+<style>
+
+    div {
+      text-align: center;
+      }
+    
+    body {
+      margin: 0 0.1%;
+      font-family: sans-serif;
+      }
+    
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    
+    h1 {
+      text-align: center;
+      font-family: serif;
+      font-weight: normal;
+      text-transform: uppercase;
+      margin-top: 30px;
+      font-size: xx-large;
+    }
+    
+    h2 {
+      color: #0c5b86;
+      font-size: 1.5em;
+      text-align: center;
+    }
+    
+    h3 {
+      border-bottom: 1px solid #0c5b86;
+      margin: 0 10%;
+    }
+
+    h4 {
+      font-size: 1.2em;
+      text-align: center;
+      font-weight: normal;
+    }
+
+</style>
+
+<div>
+
+<h1>Welcome to the C3 Web Portal!</h1>
+
+{% load static %}
+<img src="{% static 'home/C3.PNG' %}" alt="C3 Logo" class="center">
+
+<h3></h3>
+<br>
+<br>
+
+<h2>Background</h2>
+<h4>C3 was founded in Mississauga, Ontario</h4>
+<br>
+
+<h2>Locations</h2>
+<h4>Head office in Mississauga, Ontario<br>One regional office in Lachute, Quebec</h4>
+<br>
+
+<h2>Markets</h2>
+<h4>C3 is currently operating in Ontario and Quebec</h4>
+
+</div>
+
+{% endblock content %}

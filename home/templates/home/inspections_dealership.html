@@ -1,0 +1,48 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+<style>
+  
+  body {
+    margin: 0 0.1%;
+    font-family: sans-serif;
+  }
+
+  div {
+    text-align: center;
+  }
+
+  h2 {
+     color: #0c5b86;   
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0%;
+  }
+
+</style> 
+
+<div>
+  <h1 class="alert alert-danger" role="alert">Inspections</h1>  
+  <h2>{{ inspections_dealership.dealership }}</h2>
+</div>
+
+  <p></p>
+  <p><a class="btn btn-outline-danger" href="{% url 'home:inspections_dealerships' %}" role="button">{{ "Back" }}</a></p>
+<div>
+  <ul>
+  {% for inspection in inspections %}
+    <li>
+      <br>
+      <p>VIN: {{ inspection.vin }}</p>
+      <p>Comments: {{ inspection.comments }}</p>
+      <p><a class="btn btn-outline-secondary" href="{% url 'home:edit_inspection' inspection.id %}" role="button">Edit Report</a></p>
+    </li>
+  {% empty %}
+    <li>There are no inspection entries yet</li>
+  {% endfor %}
+  </ul>
+</div>
+  <p><a class="btn btn-outline-primary" href="{% url 'home:new_inspection' inspections_dealership.id %}" role="button">Add New Inspection Report</a></p>
+{% endblock content %}

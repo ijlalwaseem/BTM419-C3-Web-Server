@@ -1,0 +1,34 @@
+{% extends "home/base.html" %}
+{% block content %}
+
+<style>
+  
+    body {
+      margin: 0 0.1%;
+      font-family: sans-serif;
+    }
+  
+    div {
+      text-align: center;
+    }
+
+    h2 {
+       color: #0c5b86;   
+    }
+
+</style>
+
+    <div>
+    <h1 class="alert alert-primary" role="alert">Inventory</h1>  
+    <h2>{{ dealership.dealership }}</h2>
+    </div>
+
+    <p></p>
+    <button class="btn btn-outline-danger" onclick="window.history.back()">Cancel</button>
+    <p></p>   
+    <form action="{% url 'home:new_inventory' dealership.id %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-outline-success" name='submit'>Add Product</button>
+    </form>    
+{% endblock content %}

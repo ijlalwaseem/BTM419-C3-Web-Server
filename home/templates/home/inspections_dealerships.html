@@ -1,0 +1,39 @@
+{% extends "home/base.html" %}
+{% block content %}
+
+<style>
+
+  body {
+    margin: 0 0.1%;
+    font-family: sans-serif;
+  }
+    
+  div {
+    text-align: center;
+  }
+    
+  ul {
+    list-style-type: none;
+    padding: 0%;
+  }
+    
+</style>
+
+<div>
+<h1 class="alert alert-danger" role="alert">Inspections</h1>
+</div>
+
+<br>
+<div>
+  <ul>
+    {% for inspections_dealership in inspections_dealerships %}
+      <li>
+          <a class="btn btn-danger" href="{% url 'home:inspections_dealership' inspections_dealership.id %}" role="button">{{ inspections_dealership }}</a>
+          <p></p>
+      </li>
+    {% empty %}
+      <li>No dealerships have been added yet</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock content %}

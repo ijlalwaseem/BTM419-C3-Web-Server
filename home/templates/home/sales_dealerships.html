@@ -1,0 +1,40 @@
+{% extends "home/base.html" %}
+{% block content %}
+
+<style>
+
+body {
+    margin: 0 0.1%;
+    font-family: sans-serif;
+  }
+
+div {
+    text-align: center;
+  }
+
+ul {
+  list-style-type: none;
+  padding: 0%;
+  }
+
+</style>
+
+<div>
+<h1 class="alert alert-success" role="alert">Sales</h1>
+</div>
+
+<br>
+
+<div>
+  <ul>
+    {% for sales_dealership in sales_dealerships %}
+      <li>
+          <a class="btn btn-success" href="{% url 'home:sales_dealership' sales_dealership.id %}" role="button">{{ sales_dealership }}</a>
+          <p></p>
+      </li>
+    {% empty %}
+      <li>No dealerships have been added yet</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock content %}

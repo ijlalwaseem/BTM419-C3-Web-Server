@@ -1,0 +1,49 @@
+{% extends 'home/base.html' %}
+{% block content %}
+  
+  <style>
+  
+  body {
+    margin: 0 0.1%;
+    font-family: sans-serif;
+  }
+
+  div {
+    text-align: center;
+  }
+
+  h2 {
+     color: #0c5b86;   
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0%;
+  }
+
+  </style>  
+
+<div>
+  <h1 class="alert alert-success" role="alert">Sales</h1>
+  <h2>{{ sales_dealership.dealership }}</h2>
+</div>
+
+  <p></p>
+  <p><a class="btn btn-outline-danger" href="{% url 'home:sales_dealerships' %}" role="button">{{ "Back" }}</a></p>
+<div>
+  <ul>
+  {% for sale in sales %}
+    <li>
+      <br>
+      <p>Product: {{ sale.product }}</p>
+      <p>Price: ${{ sale.price }}</p>
+      <p>Customer ID: {{ sale.customer_id }}</p>
+      <p><a class="btn btn-outline-secondary" href="{% url 'home:edit_sale' sale.id %}" role="button">Edit Sale</a></p>
+    </li>
+  {% empty %}
+    <li>There are no sale entries yet</li>
+  {% endfor %}
+  </ul>
+</div>
+  <p><a class="btn btn-outline-primary" href="{% url 'home:new_sale' sales_dealership.id %}" role="button">Add New Sale Entry</a></p>
+{% endblock content %}
